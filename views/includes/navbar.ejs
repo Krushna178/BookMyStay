@@ -1,0 +1,131 @@
+<!-- Font Awesome CDN (required for icons) -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
+
+<style>
+  .navbar {
+    background-color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-link {
+    color: #333;
+    font-weight: 500;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #fe424d !important;
+    transform: translateY(-1px);
+  }
+
+  .search-box {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .search-inp {
+    border-radius: 25px 0 0 25px;
+    padding: 0.35rem 1rem;
+    font-size: 0.9rem;
+    border: 1px solid #ced4da;
+    height: 38px;
+    box-shadow: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .search-inp:focus {
+    border-color: #fe424d;
+    box-shadow: 0 0 0 0.2rem rgba(254, 66, 77, 0.25);
+  }
+
+  .btn-search {
+    background-color: #fe424d;
+    color: white;
+    border-radius: 0 25px 25px 0;
+    padding: 0.35rem 1rem;
+    font-size: 0.9rem;
+    height: 38px;
+    border: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+
+  .btn-search:hover {
+    background-color: #e63946;
+    transform: translateY(-1px);
+  }
+
+  .btn-search i {
+    margin-right: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .search-box {
+      max-width: 100%;
+    }
+  }
+</style>
+
+<nav class="navbar navbar-expand-md sticky-top border-bottom">
+  <div class="container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand text-danger" href="/listings">
+      <i class="fa-regular fa-compass fa-lg"></i>
+    </a>
+
+    <!-- Toggler -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <!-- Left links -->
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">Explore</a>
+        <a class="nav-link" href="/listings/new">Add new stay</a>
+      </div>
+
+      <!-- Centered Search Box -->
+      <div class="search-box mx-auto">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control search-inp"
+            type="search"
+            placeholder="Search destinations"
+            aria-label="Search"
+          />
+          <button class="btn btn-search" type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>Search
+          </button>
+        </form>
+      </div>
+
+      <!-- Right links -->
+      <div class="navbar-nav ms-auto">
+        <% if (!currentUser) { %>
+          <a class="nav-link" href="/signup"><b>Sign up</b></a>
+          <a class="nav-link" href="/login"><b>Log in</b></a>
+        <% } %>
+
+        <% if (currentUser) { %>
+          <a class="nav-link" href="/logout"><b>Log out</b></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
