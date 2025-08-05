@@ -23,7 +23,7 @@ router.get('/', wrapAsync(listingsController.index));
 router.get('/new', isLoggedIn ,listingsController.renderNewForm);
 
 // Create listing
- router.post('/',isLoggedIn,  upload.single('listing[image]'), validateListing,
+ router.post('/create-listing',isLoggedIn,  upload.single('listing[image]'), validateListing,
  wrapAsync(listingsController.createListing));
 
 
