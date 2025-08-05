@@ -37,12 +37,19 @@ module.exports.showListing = async (req, res, next) => {
 
 // Create new listing
 module.exports.createListing = async (req, res, next) => {
+
+  console.log("Creating a listing = ", req.body.listing);
   let response = await geocodingClient
     .forwardGeocode({
       query: req.body.listing.location,
       limit: 1
     })
     .send();
+
+  if (!response.body.features.length) {
+    req.flash("error", "Location not found");
+    return res.redirect("/listings/new");
+  }
 
   const url = req.file?.path;
   const filename = req.file?.filename;
